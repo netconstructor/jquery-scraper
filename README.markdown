@@ -37,7 +37,9 @@ you can specify json to get the objects out in a hash of tags:
 ### Todo's?
 
 - It should probably use XPath somehow, like Nokogiri, but it doesn't appear that there's anything like that for Javascript or Actionscript.
-- Maybe it would be helpful to be able to use jQuery on the response (haven't figured that out yet):
+- Maybe it would be helpful to be able to use jQuery on the response (haven't figured that out yet).
+
+Here's an example:
 
     $.scrape("http://github.com", function(doc) {
       var head = $(doc).find("head"); // doesn't work
