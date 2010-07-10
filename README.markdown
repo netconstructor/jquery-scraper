@@ -33,3 +33,14 @@ you can specify json to get the objects out in a hash of tags:
 
 - Because you can't grab web pages from javascript using javascript.  You have to go through either a server side script, or flash.  This uses Flash.
 - Server side processing of webpages takes up a lot of resources.  Pass that off to the client.
+
+### Todo's?
+
+- It should probably use XPath somehow, like Nokogiri, but it doesn't appear that there's anything like that for Javascript or Actionscript.
+- Maybe it would be helpful to be able to use jQuery on the response (haven't figured that out yet):
+
+    $.scrape("http://github.com", function(doc) {
+      var head = $(doc).find("head"); // doesn't work
+      var body = $(doc).find("body"); // doesn't work
+      // ...
+    });

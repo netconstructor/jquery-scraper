@@ -41,45 +41,45 @@ $.scrape({
       var element = {};
       var results = {};
       HTMLParser(data, {
-  			start: function(tag, attrs, unary) {
+        start: function(tag, attrs, unary) {
           element = {};
-  			  for (var i = 0; i < attrs.length; i++) {
-  			    var attr = attrs[i];
-  			    element[attr.name] = attr.value;
-			    }
-  			},
-  			end: function(tag) {
-  			  var key = tag.toLowerCase();
-  			  if (!results[key])
-  			    results[key] = [];
-  			  results[key].push(element);
-  			}
-  		});
-  		return results;
+          for (var i = 0; i < attrs.length; i++) {
+            var attr = attrs[i];
+            element[attr.name] = attr.value;
+          }
+        },
+        end: function(tag) {
+          var key = tag.toLowerCase();
+          if (!results[key])
+            results[key] = [];
+          results[key].push(element);
+        }
+      });
+      return results;
     },
     string: function(data) {
       var results = "";
       
       HTMLParser(data, {
-  			start: function( tag, attrs, unary ) {
-  				results += "<" + tag;
-  				for ( var i = 0; i < attrs.length; i++ ) {
-  					results += " " + attrs[i].name + '="' + attrs[i].escaped + '"';
-  				}
-  				results += (unary ? "/" : "") + ">";
-  			},
-  			end: function( tag ) {
-  				results += "</" + tag + ">";
-  			},
-  			chars: function( text ) {
-  				results += text;
-  			},
-  			comment: function( text ) {
-  				results += "<!--" + text + "-->";
-  			}
-  		});
-  		
-  		return results;
+        start: function( tag, attrs, unary ) {
+          results += "<" + tag;
+          for ( var i = 0; i < attrs.length; i++ ) {
+            results += " " + attrs[i].name + '="' + attrs[i].escaped + '"';
+          }
+          results += (unary ? "/" : "") + ">";
+        },
+        end: function( tag ) {
+          results += "</" + tag + ">";
+        },
+        chars: function( text ) {
+          results += text;
+        },
+        comment: function( text ) {
+          results += "<!--" + text + "-->";
+        }
+      });
+      
+      return results;
     }
   }
   
